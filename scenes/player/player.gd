@@ -3,29 +3,10 @@ extends CharacterBody2D
 # sprite above y-axis for y-sorting purposes
 # alt + направление - к предыдущему месту в коде (пргыает даже между файлами)
 
-# В проекте рассматриваются:
-# Top-down player movement logic
-# Player movement animation
-# Tilemaps & tilesets
-# Animated tiles
-# Решение проблемы с главной сценой:
-# https://forum.godotengine.org/t/tilemap-doesnt-show-up-when-testing/12086/3
-# Y-sorting
-# Tilemap collision
-# Camera follow + camera w/ bounds collision
-# Enemies, markers
-# health bar, anchors, signals
-# knockback on hit
-# https://www.youtube.com/watch?v=nSYK64iJ_AQ - dust trail
-# collectable items <- https://www.youtube.com/watch?v=-faLYz20qtw&list=PLMQtM2GgbPEVuTgD4Ln17ombTg6EahSLr&index=19
-
 # particles https://www.youtube.com/watch?v=-ywSvITV_fo
 # particles https://www.youtube.com/watch?v=rLsgX8x_Jg4
 # todo ue https://www.youtube.com/watch?v=_qxl7CalhDM
 
-
-# Project Settings -> search GDScrpit -> set "Untyped Declaration" to Warn, 
-# это увеличивает скорость https://youtu.be/_Wo21KAD8OY?t=534 и позволяет ознакомиться с типами данных
 # Asset: Dialogue Manager
 # Про signals: https://youtu.be/r0DskRhtGNI?t=362
 
@@ -35,6 +16,8 @@ extends CharacterBody2D
 # todo ue конфиги: https://steamcommunity.com/sharedfiles/filedetails/?id=3056895446
 # todo ue https://youtu.be/_Wo21KAD8OY?t=110 - сделать логгер, state (состояние, которое будет сохраняться)
 # todo ue разделить модули на: UI, data, states
+# todo ue добавить ускорение и выносливость
+# todo ue прыжок и препятствия, возможность перепрыгивать через них + падение в дыру и её перепрыгивание 
 
 # todo fm read godot code style https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
 # todo fm рассмотреть asset-ы https://godotengine.org/asset-library/asset
@@ -46,18 +29,6 @@ extends CharacterBody2D
 
 # todo bug решить проблему https://github.com/godotengine/godot/issues/67164 - AtlasTexture?
 # todo bug почем то слайм отображается над игроком
-
-# todo прдиумать метки для комментариев в коде, некоторые преднозначены как метки
-# для улучшения user expirience, например сделать подсказку, что нельзя атаковать без оружия
-# и составив список меток отсортировать по приоритету, чтобы решать что делать первым
-# т.е. если есть какая то идея, то её оставить на потом, после того как сделал по красивому для пользователя
-# fm - for me, т.е. метки для того чтобы разобраться для себя, не влияет на проект
-# ue - user expirience, 2 приоритет
-# bug - первый приоритет
-# 
-
-# todo добавить ускорение и выносливость
-# todo прыжок и препятствия, возможность перепрыгивать через них + падение в дыру и её перепрыгивание 
 
 # сигналы лучше всего подходят для ситуаций, когда нам нужно передавать 
 # информацию вверх по цепочке иерархий, от наследника к родителю
