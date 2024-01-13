@@ -1,3 +1,4 @@
+# Источник: https://www.youtube.com/watch?v=bIXBosDO6f8
 # Make sure you have an export preset for web and you must
 # have put `<script src="coi-serviceworker.js"></script>`
 # in the "Head Include" property of the preset the
@@ -14,8 +15,8 @@
 name: "godot4-web-deployer"
 on:
   push:
-    branches:
-      - main
+    branches: [master, main]
+  pull_request: [master, main]
 
 permissions:
   contents: write
