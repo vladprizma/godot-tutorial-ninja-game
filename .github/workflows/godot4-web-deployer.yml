@@ -16,7 +16,8 @@ name: "godot4-web-deployer"
 on:
   push:
     branches: [master, main]
-  pull_request: [master, main]
+  pull_request: 
+    branches: [master, main]
 
 permissions:
   contents: write
