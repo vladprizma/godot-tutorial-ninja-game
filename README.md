@@ -30,8 +30,9 @@ fm - for me, т.е. метки для того чтобы разобраться
 
 # Todo's
 Bugs:<br/>
-bug решить проблему https://github.com/godotengine/godot/issues/67164 - AtlasTexture?<br/>
-bug почем то слайм отображается над игроком<br/>
+решить проблему https://github.com/godotengine/godot/issues/67164 - AtlasTexture?<br/>
+почем то слайм отображается над игроком<br/>
+разобраться с багом при запуске игры в веб версии из github repo > actions > deploy, где не грузится спрайт игрока
 
 User expirience:<br/>
 добавить меню с управлением и объяснением того, что можно делать<br/>
