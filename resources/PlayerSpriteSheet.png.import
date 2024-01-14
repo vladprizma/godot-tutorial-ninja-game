@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://resources/PlayerSpriteSheet.png"
+source_file="res://resources/actor/PlayerSpriteSheet.png"
 dest_files=["res://.godot/imported/PlayerSpriteSheet.png-aa98d4b74c59993924108fb585fff975.ctex"]
 
 [params]
