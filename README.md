@@ -53,3 +53,4 @@ read godot code style https://docs.godotengine.org/en/stable/tutorials/scripting
 ознакомиться с godot terrains<br/>
 scoreboard https://www.youtube.com/watch?v=xeoP5CqAi0g<br/>
 про многопоточность https://vk.com/@491582172-godot-4-mnogopotochnost<br/>
+прочитать https://commonmark.org/help/ и https://docs.github.com/ru/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax<br/>
