@@ -10,26 +10,6 @@ extends CharacterBody2D
 # Asset: Dialogue Manager
 # Про signals: https://youtu.be/r0DskRhtGNI?t=362
 
-# todo ue добавить меню с управлением и объяснением того, что можно делать
-# todo ue добавить границы в мире, за которые нельзя выходить 
-# todo ue сделать возможность запуска игры в гитхабе https://youtu.be/PP12lu-C9k4?t=424
-# todo ue конфиги: https://steamcommunity.com/sharedfiles/filedetails/?id=3056895446
-# todo ue https://youtu.be/_Wo21KAD8OY?t=110 - сделать логгер, state (состояние, которое будет сохраняться)
-# todo ue разделить модули на: UI, data, states
-# todo ue добавить ускорение и выносливость
-# todo ue прыжок и препятствия, возможность перепрыгивать через них + падение в дыру и её перепрыгивание 
-
-# todo fm read godot code style https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
-# todo fm рассмотреть asset-ы https://godotengine.org/asset-library/asset
-# todo fm идея игра в которой biderectional opposite walk lock (когда идешь в 2 
-# противоположные стороны одновременно) - фича и дает какую то способность
-# todo fm читать книгу the art of game desgin by jesse shell
-# todo fm ознакомиться с godot terrains
-# todo fm scoreboard https://www.youtube.com/watch?v=xeoP5CqAi0g
-
-# todo bug решить проблему https://github.com/godotengine/godot/issues/67164 - AtlasTexture?
-# todo bug почем то слайм отображается над игроком
-
 # сигналы лучше всего подходят для ситуаций, когда нам нужно передавать 
 # информацию вверх по цепочке иерархий, от наследника к родителю
 signal healthChanged
@@ -112,8 +92,6 @@ func hurtByEnemy(area: Area2D) -> void:
 	if currentHealth <= 0:
 		currentHealth = maxHealth
 
-# todo ue игрок должен подпрыгивать при knockback (т.е. конечный вектор должен изгибаться)
-# todo ue сделать отпрыгиваине медленнее
 func knockback(enemyVelocity: Vector2) -> void:
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
 	velocity = knockbackDirection
