@@ -96,3 +96,7 @@ func knockback(enemyVelocity: Vector2) -> void:
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
 	velocity = knockbackDirection
 	move_and_slide()
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.has_method("collect"):
+		area.collect()
