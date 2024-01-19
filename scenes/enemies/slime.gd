@@ -22,7 +22,7 @@ func _ready() -> void:
 	endPosition = endPoint.global_position
 
 # todo ue сделать чтобы слайм не мог передвигаться когда на земле 
-# todo ue обычно 5 FPS, но когда следует аза игроком - около 10
+# todo ue обычно 5 FPS, но когда следует за игроком - около 10
 func updateVelocity() -> void:
 	var moveDirection: Vector2 = endPosition - position
 	if moveDirection.length() < limit:

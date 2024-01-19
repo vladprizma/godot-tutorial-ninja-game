@@ -25,6 +25,7 @@ signal healthChanged
 @onready var hurtBox: Area2D = $HurtBox
 @onready var dustTrail: GPUParticles2D = $GPUParticles2D
 
+var moveDirection: Vector2
 var currentHealth: int = maxHealth
 var prevFrameDirection: String
 var isIdle: bool
@@ -35,7 +36,7 @@ func _ready() -> void:
 	effects.play("RESET")
 
 func handleInput() -> void:
-	var moveDirection: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
 	isIdle = velocity.length_squared() == 0
 	isRun = Input.is_key_pressed(KEY_SHIFT) and !isIdle
@@ -52,10 +53,12 @@ func updateAnimation() -> void:
 			animations.stop()
 		return # если !animations.is_playing(), то возвращаемся тоже
 	
+	# todo bug если врезаться во что то, то скорость будет нулевая и анимация 
+	# не будет соответствовать выбранной стороне 
 	var direction: String = "_down"
-	if velocity.x < 0: direction = "_left"
-	elif velocity.x > 0: direction = "_right"
-	elif velocity.y < 0: direction = "_up"
+	if moveDirection.x < 0: direction = "_left"
+	elif moveDirection.x > 0: direction = "_right"
+	elif moveDirection.y < 0: direction = "_up"
 	
 	prevFrameDirection = direction
 	if isRun:
@@ -93,10 +96,10 @@ func hurtByEnemy(area: Area2D) -> void:
 		currentHealth = maxHealth
 
 func knockback(enemyVelocity: Vector2) -> void:
-	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
+	var knockbackDirection: Vector2 = (enemyVelocity - velocity).normalized() * knockbackPower
 	velocity = knockbackDirection
 	move_and_slide()
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
-	if area.has_method("collect"):
+	if area.has_method("check_type") && area.check_type("Collectable"):
 		area.collect()

@@ -17,7 +17,8 @@ knockback on hit<br/>
 dust trail - https://www.youtube.com/watch?v=nSYK64iJ_AQ<br/>
 collectable items <- https://www.youtube.com/watch?v=-faLYz20qtw&list=PLMQtM2GgbPEVuTgD4Ln17ombTg6EahSLr&index=19<br/>
 deploy, browser game startup hosted on github - https://vladprizma.github.io/godot-tutorial-ninja-game/ (нашел в видео https://youtu.be/PP12lu-C9k4?t=424)
- 
+inhereted scene
+
 # Что я нашел полезным в процессе, рекомендации полученные в процессе изучения материалов
 Project Settings -> search GDScrpit -> set "Untyped Declaration" to Warn,<br/>
 для увеличения скорости работы https://youtu.be/_Wo21KAD8OY?t=534, а так же осознанного использования типов данных и их изучения<br/>
