@@ -227,7 +227,7 @@ _data = {
 radius = 4.0
 height = 15.5556
 
-[node name="Slime_linear" type="CharacterBody2D"]
+[node name="Slime_follow" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 2
 collision_mask = 2

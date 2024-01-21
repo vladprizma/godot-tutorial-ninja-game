@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://boebcl8eorcjw"]
+[gd_scene load_steps=17 format=3 uid="uid://boebcl8eorcjw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_e3pig"]
 [ext_resource type="PackedScene" uid="uid://c2lr7bbmgw74l" path="res://scenes/player/player.tscn" id="1_kpk77"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scenes/world/FollowCam.gd" id="5_dlqg0"]
 [ext_resource type="PackedScene" uid="uid://ijxwpqdjrqhp" path="res://scenes/enemies/slime.tscn" id="6_h0hpk"]
 [ext_resource type="PackedScene" uid="uid://bjyj3y1iq5jvd" path="res://scenes/hud/hearts_container.tscn" id="7_tpxrs"]
+[ext_resource type="Script" path="res://scenes/world/CanvasLayer.gd" id="9_rq4jx"]
+[ext_resource type="PackedScene" uid="uid://cqvfk3q61lqay" path="res://scenes/hud/inventory/inventory.tscn" id="10_vgta6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7u0af"]
 texture = ExtResource("2_y2ylh")
@@ -2652,11 +2654,22 @@ tileMap = NodePath("../../TileMap")
 
 [node name="Slime" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("6_h0hpk")]
 position = Vector2(216, 48)
-endPoint = NodePath("Marker2D")
-
-[node name="Marker2D" type="Marker2D" parent="Slime"]
-position = Vector2(40, 48)
+endPoint = NodePath("")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("9_rq4jx")
 
 [node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("7_tpxrs")]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("10_vgta6")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -82.0
+offset_right = 65.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0

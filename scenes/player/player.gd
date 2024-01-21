@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 # sprite above y-axis for y-sorting purposes
-# alt + направление - к предыдущему месту в коде (пргыает даже между файлами)
+# alt + (влево/вправо) - к предыдущему месту в коде (пргыает даже между файлами)
+# ctrl + d - выделяет совпадения выделенного текста
+# ctrl + shift + o - позволяет искать по все созданным сценам
 
 # particles https://www.youtube.com/watch?v=-ywSvITV_fo
 # particles https://www.youtube.com/watch?v=rLsgX8x_Jg4
@@ -53,8 +55,7 @@ func updateAnimation() -> void:
 			animations.stop()
 		return # если !animations.is_playing(), то возвращаемся тоже
 	
-	# todo bug если врезаться во что то, то скорость будет нулевая и анимация 
-	# не будет соответствовать выбранной стороне 
+	# todo на джойстике указание верхней стороны ходьбы не включает соответствующую анимацию
 	var direction: String = "_down"
 	if moveDirection.x < 0: direction = "_left"
 	elif moveDirection.x > 0: direction = "_right"
