@@ -12,10 +12,6 @@ extends CharacterBody2D
 # Asset: Dialogue Manager
 # Про signals: https://youtu.be/r0DskRhtGNI?t=362
 
-# сигналы лучше всего подходят для ситуаций, когда нам нужно передавать 
-# информацию вверх по цепочке иерархий, от наследника к родителю
-signal healthChanged
-
 @export var speed: int = 35
 @export var runSpeedScale: float = 1.7
 @export var maxHealth: int = 3
@@ -26,6 +22,10 @@ signal healthChanged
 @onready var hurtTimer: Timer = $HurtTimer
 @onready var hurtBox: Area2D = $HurtBox
 @onready var dustTrail: GPUParticles2D = $GPUParticles2D
+
+# сигналы лучше всего подходят для ситуаций, когда нам нужно передавать 
+# информацию вверх по цепочке иерархий, от наследника к родителю
+signal healthChanged
 
 var moveDirection: Vector2
 var currentHealth: int = maxHealth
@@ -74,14 +74,18 @@ func _physics_process(delta: float) -> void:
 	updateAnimation()
 	checkHurt()
 
+# todo посмотреть как обрабатывается получение урона https://www.youtube.com/watch?v=GwCiGixlqiU&t=5468s
 func checkHurt() -> void:
 	if isHurt:
 		return
 	for area in hurtBox.get_overlapping_areas():
 		if area.name == "HitBox":
-			hurtByEnemy(area)
+			player_take_damage(area)
 
-func hurtByEnemy(area: Area2D) -> void:
+# todo надо перевести на take_damage, чтобы была общая схема получения урона у всех (игрока и врагов)
+# todo bug выстрел попадает в тело игрока и задевает hurtBox, 
+# стоит ли учитывать свои снаряды при проверке на получение урона?
+func player_take_damage(area: Area2D) -> void:
 	currentHealth -= 1
 	healthChanged.emit(currentHealth)
 	isHurt = true

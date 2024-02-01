@@ -49,6 +49,7 @@ https://youtu.be/_Wo21KAD8OY?t=110 - сделать логгер, state (сос�
 сундуки из которых выпадают предметы<br/>
 предметы с редкостями<br/>
 инвентарь с описанием предметов<br/>
+сделать камеру как здесь https://www.youtube.com/watch?v=pusd6B5PshU, чтобы она следовала за мышкой, но не сильно<br/>
 
 For me:<br/>
 read godot code style https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html<br/>

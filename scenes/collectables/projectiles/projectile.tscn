@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8l2w2cp6neow"]
+
+[ext_resource type="Script" path="res://scenes/collectables/projectiles/projectile.gd" id="1_keoxl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8orq"]
+radius = 7.2294
+
+[node name="Projectile" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("1_keoxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d8orq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

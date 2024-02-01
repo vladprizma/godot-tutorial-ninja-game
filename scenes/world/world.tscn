@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://boebcl8eorcjw"]
+[gd_scene load_steps=18 format=3 uid="uid://boebcl8eorcjw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_e3pig"]
 [ext_resource type="PackedScene" uid="uid://c2lr7bbmgw74l" path="res://scenes/player/player.tscn" id="1_kpk77"]
@@ -2614,6 +2614,12 @@ sources/1 = SubResource("TileSetAtlasSource_c7ghj")
 sources/2 = SubResource("TileSetAtlasSource_ruc8i")
 sources/3 = SubResource("TileSetScenesCollectionSource_hneht")
 
+[sub_resource type="Curve2D" id="Curve2D_gjphs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, -64, 0, 0, 0, 0, -64, 192, 0, 0, 0, 0, 320, 192, 0, 0, 0, 0, 320, -64, 0, 0, 0, 0, -64, -64)
+}
+point_count = 5
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_e3pig")
@@ -2641,7 +2647,7 @@ layer_4/name = "collectables"
 layer_4/tile_data = PackedInt32Array(327685, 3, 65536, 327690, 3, 65536, 393225, 3, 65536, 458759, 3, 65536)
 
 [node name="Player" parent="." instance=ExtResource("1_kpk77")]
-position = Vector2(120, 72)
+position = Vector2(118, 75)
 
 [node name="FollowCam" type="Camera2D" parent="Player" node_paths=PackedStringArray("tileMap")]
 limit_left = 0
@@ -2652,9 +2658,17 @@ position_smoothing_enabled = true
 script = ExtResource("5_dlqg0")
 tileMap = NodePath("../../TileMap")
 
-[node name="Slime" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("6_h0hpk")]
+[node name="SpawnPath" type="Path2D" parent="Player"]
+position = Vector2(-118, -75)
+curve = SubResource("Curve2D_gjphs")
+
+[node name="SpawnPoint" type="PathFollow2D" parent="Player/SpawnPath"]
+unique_name_in_owner = true
+position = Vector2(-64, -64)
+rotation = 1.5708
+
+[node name="Slime" parent="." instance=ExtResource("6_h0hpk")]
 position = Vector2(216, 48)
-endPoint = NodePath("")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("9_rq4jx")
@@ -2673,3 +2687,9 @@ offset_right = 65.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="SpawnCooldown" type="Timer" parent="."]
+wait_time = 1.2
+autostart = true
+
+[connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
